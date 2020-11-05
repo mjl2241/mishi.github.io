@@ -56,4 +56,4 @@ Languages: Fluent Korean, Nepali, English
 [github](https://github.com/mjl2241/public_projects.git)  
 [contact](mailto:<mishi9399@gmail.com>)  
 
-![]<image src ="./pix/grad_photos.jpg" style="width:75%"> 
+![]<image src ="./pix/grad_photos.jpg" style="width:50%"> 

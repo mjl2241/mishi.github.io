@@ -1,7 +1,7 @@
 name: "Yay internet!"
 output_dir: "."
 navbar:
-  title: "Michelle Lee"
+  title: "Michelle Lee 👋🏼 "
   right:
     - text: "About"
       href: about_me.html
@@ -15,4 +15,4 @@ navbar:
       href: http://github.com/mjl2241/
 output:
   html_document:
-    theme: cerulean
+    theme: lux
