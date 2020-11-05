@@ -15,4 +15,4 @@ navbar:
       href: http://github.com/mjl2241/
 output:
   html_document:
-    theme: lux
+    theme: cerulean
