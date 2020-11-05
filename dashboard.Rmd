@@ -1,0 +1,72 @@
+---
+title: "Instacart Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+```{r setup, include=FALSE, echo = FALSE}
+library(htmlwidgets)
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+data("instacart")
+
+#find popular items in baking ingredients
+instacart_popular_items = 
+  instacart %>% 
+  select (
+   aisle,order_hour_of_day, order_dow, product_name) %>%
+  filter(aisle %in% c("baking ingredients")) %>%
+  count(product_name) %>% 
+  mutate(rank = min_rank(desc(n))) %>% 
+  filter(rank < 6) %>% 
+  arrange(desc(n)) 
+#instacart_popular_items
+
+instacart_pop_times = 
+  instacart %>%
+  select (
+   aisle,order_hour_of_day, order_dow, product_name) %>%
+  filter(product_name %in% c("Light Brown Sugar", "Pure Baking Soda", "Cane Sugar", "Premium Pure Cane Granulated Sugar","Organic Vanilla Extract")) %>%
+  group_by(product_name) %>%
+  count(order_hour_of_day)
+#instacart_pop_times
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+#instacart_pop_times =
+instacart_pop_times %>%
+  plot_ly(
+    x = ~order_hour_of_day, y = ~n, type = "scatter", mode = "markers",
+    color = ~product_name, title = "Popular times to order products")
+```
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+instacart_pop_times %>%
+  plot_ly (y=~order_hour_of_day, color = ~product_name, type = "box")
+```
+
+
+### Chart C
+
+```{r}
+instacart_pop_times %>%
+  plot_ly(x=~order_hour_of_day, y=~n, color = ~product_name, type ="bar")
+```
+
+
