@@ -5,6 +5,7 @@ output:
     orientation: columns
     vertical_layout: fill
 ---
+
 ```{r setup, include=FALSE, echo = FALSE}
 library(htmlwidgets)
 library(flexdashboard)
